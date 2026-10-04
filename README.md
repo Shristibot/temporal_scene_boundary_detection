@@ -16,19 +16,19 @@ cd path/to/temporal_scene_boundary_detection
 ### 1. Real-Video Inspection / Calibration Mode (`--inspect`)
 Runs video reading, shot detection, and feature extraction. Prints raw feature values in a formatted table and saves `results/<video_name>_inspection.csv`. **Stops before classification**.
 ```bash
-python3 main.py --inspect input_videos/rel_news.mp4
+python3 main.py --inspect input_videos/YOUR_VIDEO.mp4
 ```
 
 ### 2. Generate Ground-Truth Annotation Template (`annotate_ground_truth.py`)
 Extracts keyframe JPEG images for every detected shot into `ground_truth/<video_name>/` and generates a blank `results/<video_name>_ground_truth.json` with `true_label: ""` for manual visual labeling.
 ```bash
-python3 annotate_ground_truth.py input_videos/rel_news.mp4
+python3 annotate_ground_truth.py input_videos/YOUR_VIDEO.mp4
 ```
 
 ### 3. Single Local Video Processing
 Processes a single video through the complete pipeline (detection, features, rule classification, redundancy) and exports CSV and JSON reports to `results/`.
 ```bash
-python3 main.py --video input_videos/rel_news.mp4
+python3 main.py --video input_videos/YOUR_VIDEO.mp4
 ```
 
 ### 4. Online Video URL Processing
@@ -67,13 +67,13 @@ python3 main.py --batch input_videos/
 ### 7. Evaluation Mode (JSON Ground Truth)
 Compares system predictions against ground truth labels from a `.json` file:
 ```bash
-python3 main.py --evaluate results/rel_news_results.json --ground-truth results/rel_news_ground_truth.json
+python3 main.py --evaluate results/Stalin_Vs_Vijay__Tamil_Nadu_s_New_Battle_Over_Emergency_Legacy_results.json --ground-truth ground_truth/Stalin_Vs_Vijay__Tamil_Nadu_s_New_Battle_Over_Emergency_Legacy/Stalin_Vs_Vijay__Tamil_Nadu_s_New_Battle_Over_Emergency_Legacy_ground_truth.json
 ```
 
 ### 8. Audit Overlay Mode
 Generates an annotated video with on-screen shot labels for visual inspection. Requires `--ground-truth` to match predictions:
 ```bash
-python3 main.py --video input_videos/rel_news.mp4 --audit --ground-truth results/rel_news_ground_truth.json
+python3 main.py --video input_videos/YOUR_VIDEO.mp4 --audit --ground-truth ground_truth/YOUR_VIDEO/YOUR_VIDEO_ground_truth.json
 ```
 
 ### Additional Flags
